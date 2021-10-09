@@ -47,3 +47,15 @@ handleBarCodeScanned=async({type,data})=>{
         )
     }
 }
+
+const styles = StyleSheet.create({
+  inputView: { flexDirection: 'row', marginTop: 20 },
+  inputBox: { backgroundColor: 'teal', width: 200, height: 40 },
+  scanBox: {
+    backgroundColor: 'red',
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
