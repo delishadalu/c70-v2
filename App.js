@@ -1,29 +1,34 @@
-import React, { Component } from 'react'
-import { AppState, Text, View } from 'react-native'
-import {createBottomTabNavigator} from 'react-navigation-tabs'
-import {createAppContainer} from 'react-navigation'
-import Transaction from './screens/Transaction'
-import Search from './screens/Search'
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import Search from './screens/search'
+import Transaction from './screens/transaction'
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default class App extends Component {
-  render() {
-    return (
-      <AppContainer />
+const Tab = createBottomTabNavigator();
+
+class BottomTabNavigator extends React.Component{
+  render(){
+    return(
+      <NavigationContainer>
+      <Tab.Navigator tabBarOptions={{
+        activeTintColor:'blue',
+        inactiveTintColor:'gray',
+        style:{backgroundColor:'beige',borderRadius:20},
+        labelStyle:{fontSize:12}
+      }}>
+        <Tab.Screen name="Transaction" component={Transaction} />
+        <Tab.Screen name="Search" component={Search} />
+      </Tab.Navigator>
+    </NavigationContainer>
     )
   }
 }
 
-var TabNavigation= createBottomTabNavigator({
-  Transaction:Transaction,
-  Search:Search
-},
-{
-  tabBarOptions:{
-          activeTintColor:"blue",
-          inactiveTintColor:'darkgray',
-          style:{backgroundColor:"gray"}
+export default class App extends React.Component{
+  render(){
+    return(
+      <BottomTabNavigator />
+    )
   }
 }
-)
-
-const AppContainer = createAppContainer(TabNavigation)
